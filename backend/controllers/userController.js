@@ -7,49 +7,54 @@ const secret="secret";
 
 
 function getStartupCode(language) {
-      const lang = language.toLowerCase();
+  const lang = language.toLowerCase();
 
-      if (lang === "python") {
-          return `print("Hello World")`;
-        }
-        else if (lang === "java") {
-          return `public class Main {
-          public static void main(String[] args) {
-          System.out.println("Hello World");
-          }
-          }`;
-        } 
-        else if (lang === "javascript") {
-          return `console.log("Hello World");`;
-        }
-        else if (lang === "cpp") {
-          return `#include <iostream>
-          using namespace std;
-          int main() {
-          cout << "Hello World" << endl;
-          return 0;
-          }`;
-        } 
-        else if (lang === "c") {
-          return `#include <stdio.h>
-          int main() {
-          printf("Hello World\\n");
-          return 0;
-          }`;
-        }
-        else if (lang === "go") {
-          return `package main
-          import "fmt"
-          func main() {
-          fmt.Println("Hello World")
-          }`;
-        } 
-        else if (lang === "bash") {
-          return 'echo "Hello World"';
-        } else {
-          return "Unsupported language";
-        }
-    }
+  if (lang === "python") {
+    return `print("Hello World")`;
+  }
+  else if (lang === "java") {
+    return `public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello World");
+  }
+}`;
+  }
+  else if (lang === "javascript") {
+    return `console.log("Hello World");`;
+  }
+  else if (lang === "cpp") {
+    return `#include <iostream>
+using namespace std;
+
+int main() {
+  cout << "Hello World" << endl;
+  return 0;
+}`;
+  }
+  else if (lang === "c") {
+    return `#include <stdio.h>
+
+int main() {
+  printf("Hello World\\n");
+  return 0;
+}`;
+  }
+  else if (lang === "go") {
+    return `package main
+import "fmt"
+
+func main() {
+  fmt.Println("Hello World")
+}`;
+  }
+  else if (lang === "bash") {
+    return `echo "Hello World"`;
+  }
+  else {
+    return "Unsupported language";
+  }
+}
+
 
 
 exports.signUp = async (req, res) => {
