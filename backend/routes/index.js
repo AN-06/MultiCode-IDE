@@ -1,5 +1,5 @@
 var express = require('express');
-const { signUp, createProj } = require('../controllers/userController');
+const { signUp, createProj, saveProj } = require('../controllers/userController');
 const { login } = require('../controllers/userController');
 
 var router = express.Router();
@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 
 router.post("/signUp",signUp); //signUp is in controller func
 router.post("/login",login); 
-router.post("/createProj",createProj); 
+router.post("/createProj",createProj);
+router.post("/saveProj",saveProj); 
 
 module.exports = router;

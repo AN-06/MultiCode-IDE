@@ -170,3 +170,34 @@ exports.createProj= async(req, res)=>{
     })
   }
 }
+
+exports.saveProj= async(req, res)=>{
+  try{
+    let {token, projectId, code} = req.body;
+    let decoded = jwt.verify(token, secret);
+    let user = await userModel.findOne({_id: decoded.userId});
+
+    if(!user){
+      return res.status(404).json({
+        success: false,
+        msg: "User not found"
+        });
+    };
+
+    let project = await projectModel.findOne({_id: projectId});
+    project.code=code;
+    await project.save();
+
+    return res.status(200).json({
+      success: true,
+      msg: "Project saved successfully"
+      });
+  }
+
+  catch(error){
+    return res.status(500).json({
+      success: false,
+      msg: error.message
+      })
+  }
+}
